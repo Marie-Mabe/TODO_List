@@ -1,5 +1,5 @@
 /* This is an example CSS file, feel free to remove/edit it anytime */
-.footer {
+/* .footer {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -16,4 +16,232 @@
 
 .footer span {
   font-size: 14px;
+} */
+
+* {
+  box-sizing: border-box;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Supprime les barres de défilement */
+}
+
+
+.contain {
+  margin: 0; /* Supprime tout espace autour */
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  position: relative; /* Nécessaire pour positionner .overlay */
+  overflow: hidden; /* Cache tout débordement */
+}
+
+.contain img {
+  width: 100%; /* L'image occupe toute la largeur du conteneur */
+  height: 25%; /* Ajustez selon vos besoins */
+  object-fit: cover; /* Coupe l'image pour remplir la zone sans déformer */
+ 
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 25%; /* Même hauteur que l'image */
+  display: flex;
+  flex-direction: row;
+  justify-content: last baseline;
+  align-items: center;
+  color: white; /* Texte en blanc */
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  z-index: 2;
+}
+
+.overlay h1 {
+  margin-left: 600px;
+  margin-bottom: 60px;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.overlay button {
+  margin-bottom: 50px;
+  margin-left: 380px;
+  background-color: transparent; /* Aucun fond pour laisser l'icône visible */
+  border: none; /* Pas de bordure */
+  cursor: pointer;
+  transition: transform 0.3s; /* Animation lors du clic ou du survol */
+}
+
+.overlay button:hover {
+  transform: scale(1.1); /* Légèrement agrandi au survol */
+}
+
+.overlay button img {
+  width: 30px; /* Taille de l'icône */
+  height: 30px;
+  display: block; /* S'assure que l'image ne dépasse pas du bouton */
+}
+
+.todo {
+  position: absolute;
+  top: 360px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 500px; /* Largeur maximale fixée */
+  height: 500px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  box-sizing: border-box; /* Inclut les bordures et le padding dans la largeur */
+}
+
+.create_todo {
+  width: 100%; /* Utilise la même largeur que .todo */
+  height: 60px;
+  margin-top: 10px; /* Espace au-dessus si nécessaire */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  box-sizing: border-box; /* Assure un calcul correct de la largeur */
+  margin-top: 0px;
+  position: relative;
+}
+
+
+.create_todo input {
+  
+    width: calc(100% - 20px); /* Ajuste pour inclure un padding de 10px de chaque côté */
+    height: 40px;
+    border: solid 1px rgb(146, 146, 145);
+    border-radius: 20px;
+    font-size: 12px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  
+
+
+#bnt {
+  position: absolute;
+  top: 50%; /* Centre verticalement */
+  right: 15px; /* Décalé à droite */
+  transform: translateY(-50%); /* Centre parfaitement le bouton */
+  width: 30px; /* Taille pour le rendre rond */
+  height: 30px; /* Hauteur égale à la largeur */
+  background-color: rgb(181, 182, 183);
+  color: white; /* Couleur du texte ou de l'icône */
+  border-radius: 50%; /* Rend le bouton parfaitement rond */
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ajoute un léger effet d'ombre */
+}
+
+
+.listeTaches ul { 
+  list-style-type: none;
+  padding: 0; /* Supprime le retrait par défaut des listes */
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+
+li {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+
+  
+}
+
+li:hover {
+  background-color: #f0f0f0; /* Change de fond au survol */
+}
+
+.delete-btn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 2px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: none; /* Cacher le bouton initialement */
+}
+
+#compteurTaches {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px;
+  color: rgb(10, 10, 10);
+  font-size: 16px;
+  display: none;
+}
+
+body.dark {
+  color: #fff;
+  background-color: black;
+}
+
+body.dark .contain {
+  color: #fff;
+  background-color: black;
+}
+
+body.dark .todo {
+  color: #fff;
+  background-color: rgb(66, 66, 66);
+}
+
+body.dark li:hover {
+  background-color: #f0f0f029; /* Change de fond au survol */
+
+}
+
+body.dark .create_todo {
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #666;
+}
+
+body.dark #zonesaisie {
+  background-color: #555;
+  color: #fff;
+  border: 1px solid #888;
+}
+
+body.dark #bnt {
+  background-color: #c1dbf6;
+  color: #fff;
+  border: none;
+}
+
+
+body.dark #compteurTaches {
+  color: #fff;
+
+}
+
+
+
+
